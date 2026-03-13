@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Thu Mar  5 16:57:26 2026
+# Process ID: 14976
+# Current directory: C:/Users/mkxue/Desktop/已修改/Lab1-1/ALU_4bit
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent7816 C:\Users\mkxue\Desktop\已修改\Lab1-1\ALU_4bit\ALU_4bit.xpr
+# Log file: C:/Users/mkxue/Desktop/已修改/Lab1-1/ALU_4bit/vivado.log
+# Journal file: C:/Users/mkxue/Desktop/已修改/Lab1-1/ALU_4bit\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/mkxue/Desktop/已修改/Lab1-1/ALU_4bit/ALU_4bit.xpr
+update_compile_order -fileset sources_1
