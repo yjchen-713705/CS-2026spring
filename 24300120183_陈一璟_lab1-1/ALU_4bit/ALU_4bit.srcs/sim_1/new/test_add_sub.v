@@ -37,32 +37,35 @@ module test_add_sub;
     );
 
     initial begin
-    // 测试1: 9 + 7，应当溢出
+    // 测试1
    sub = 0;    // 加法
    a = 4'b1001;    // 9
    b = 4'b0111;    // 7
    #10;
-   $display("测试1: %d + %d = %d, cout=%b, overflow=%b", a, b, sum, cout, overflow);
-
-   // 测试2: 14 - 15，应当溢出
+   $display("1: %d + %d = %d, cout=%b, overflow=%b", a, b, sum, cout, overflow);
+   // 测试2
    sub = 1;
    a = 4'b1110;  // 14
    b = 4'b1111;  // 15
    #10;
-   $display("测试2: %d - %d = %d, cout=%b, overflow=%b", a, b, sum, cout, overflow);
+   $display("2: %d - %d = %d, cout=%b, overflow=%b", a, b, sum, cout, overflow);
 
-   // 测试3: 4 + 5，应当无溢出
-   sub = 0;
-   a = 4'b0100;  // 4
-   b = 4'b0101;  // 5
-   #10;
-   $display("测试3: %d + %d = %d, cout=%b, overflow=%b", a, b, sum, cout, overflow);
+    #10;
+   $display("=========================================");
 
-   // 测试4: -5 - 4，应当无溢出
-   sub = 1;
-   a = 4'b1011;  // -5 (补码表示)
-   b = 4'b0100;  // 4
+   // 测试3：正溢出
+   sub = 0;    // 加法
+   a = 4'b0100;    // 4
+   b = 4'b0101;    // 5
    #10;
-   $display("测试4: -5 - %d = %d, cout=%b, overflow=%b", b, sum, cout, overflow);
+   $display("3: %d + %d = %d, cout=%b, overflow=%b", a, b, sum, cout, overflow);
+
+   // 测试4：负溢出
+   sub = 0;    // 加法
+   a = 4'b1011;    // -5
+   b = 4'b1100;    // -4
+   #10;
+   $display("4: %d + %d = %d, cout=%b, overflow=%b", a, b, sum, cout, overflow);
+
     end
 endmodule
