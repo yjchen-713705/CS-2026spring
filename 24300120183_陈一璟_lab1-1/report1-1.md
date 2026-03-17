@@ -51,8 +51,7 @@
    
 3. **编写测试用例**
    - 编写`test_add_sub.v`测试模块
-   - 设计基本加减测试：`9+7`和`14-15`
-   - 设计溢出测试：`4+5`（正溢出）和`-5-4`（负溢出）
+   - 设计测试：`9+7`、`14-15`、`4+5`、`-5-4`
    - 注：测试中使用4位二进制有符号数表示
 
 4. **仿真验证**
@@ -137,40 +136,47 @@ endmodule
    a = 4'b1001;    // 9
    b = 4'b0111;    // 7
    #10;
-   $display("加法测试: %d + %d = %d, cout=%b, overflow=%b", a, b, sum, cout, overflow);
+   // 9+7=16，溢出
+   $display("测试1: %d + %d = %d, cout=%b, overflow=%b", a, b, sum, cout, overflow);
 
    // 测试2: 14 - 15
    sub = 1;
    a = 4'b1110;  // 14
    b = 4'b1111;  // 15
    #10;
-   $display("减法测试: %d - %d = %d, cout=%b, overflow=%b", a, b, sum, cout, overflow);
+   // 14-15=-1，溢出
+   $display("测试2: %d - %d = %d, cout=%b, overflow=%b", a, b, sum, cout, overflow);
 
-   // 测试3: 溢出测试 (4 + 5)
+   // 测试3: 4 + 5
    sub = 0;
    a = 4'b0100;  // 4
    b = 4'b0101;  // 5
    #10;
-   $display("溢出测试1: %d + %d = %d, cout=%b, overflow=%b", a, b, sum, cout, overflow);
+   // 4+5=9，无溢出
+   $display("测试3: %d + %d = %d, cout=%b, overflow=%b", a, b, sum, cout, overflow);
 
-   // 测试4: 溢出测试 (-5 - 4)
+   // 测试4: -5 - 4
    sub = 1;
    a = 4'b1011;  // -5 (补码表示)
    b = 4'b0100;  // 4
    #10;
-   $display("溢出测试2: -5 - %d = %d, cout=%b, overflow=%b", b, sum, cout, overflow);
+   // -5-4=-9，无溢出
+   $display("测试4: -5 - %d = %d, cout=%b, overflow=%b", b, sum, cout, overflow);
 ```
 
 ## 四、实验结果
 ### 1. 实验现象
 1. 初始代码的测试用例为`5+3`和`5-3`，运行截图如下：
-   ![初始代码测试用例截图](pics/initial_code_test.png)
+   ![初始代码测试用例截图](pics/test_origin.png)
+   由于5+3=8，无进位，则`cout = 0`；
+   由于5-3=2，无借位，则`cout = 1`（补码减法中被减数大于减数）。
 
 2. 添加溢出检测和相应测试用例后的运行截图如下：
-   ![添加溢出检测测试用例截图](pics/overflow_test.png)
+   ![添加溢出检测测试用例截图](pics/test_overflow.png)
 
 ### 2. 波形分析（适用于Vivado仿真）
 （插入关键波形图并进行分析说明）
+<!-- TODO：是否需要添加波形 -->
 
 ### 3. 结果分析
 1. 初始代码运行
@@ -184,6 +190,7 @@ endmodule
 ### 1. 遇到的问题及解决方法
 1. 问题描述：溢出检测方式有多种，决定选择何种溢出检测方式最适合？
    解决方法：
+   - 选择了最高位（符号位）的进位输入和进位输出不同时，发生溢出的检测方式，这种检测方式简单直接，能够及时发现溢出情况。
 
 2. 问题描述：
    解决方法：
