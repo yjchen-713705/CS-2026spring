@@ -2,12 +2,12 @@
 # Webtalk v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Wed Mar 18 18:04:58 2026
-# Process ID: 24872
+# Start of session at: Wed Mar 18 18:03:52 2026
+# Process ID: 33992
 # Current directory: D:/dev/FDU-2026spring/CS-2026spring/24300120183_陈一璟_lab1-1/ALU_4bit/ALU_4bit.sim/sim_1/behav/xsim
 # Command line: wbtcv.exe -mode batch -source D:/dev/FDU-2026spring/CS-2026spring/24300120183_陈一璟_lab1-1/ALU_4bit/ALU_4bit.sim/sim_1/behav/xsim/xsim.dir/test_add_sub_behav/webtalk/xsim_webtalk.tcl -notrace
 # Log file: D:/dev/FDU-2026spring/CS-2026spring/24300120183_陈一璟_lab1-1/ALU_4bit/ALU_4bit.sim/sim_1/behav/xsim/webtalk.log
 # Journal file: D:/dev/FDU-2026spring/CS-2026spring/24300120183_陈一璟_lab1-1/ALU_4bit/ALU_4bit.sim/sim_1/behav/xsim\webtalk.jou
 #-----------------------------------------------------------
 source D:/dev/FDU-2026spring/CS-2026spring/24300120183_陈一璟_lab1-1/ALU_4bit/ALU_4bit.sim/sim_1/behav/xsim/xsim.dir/test_add_sub_behav/webtalk/xsim_webtalk.tcl -notrace
-INFO: [Common 17-206] Exiting Webtalk at Wed Mar 18 18:05:00 2026...
+INFO: [Common 17-206] Exiting Webtalk at Wed Mar 18 18:03:56 2026...

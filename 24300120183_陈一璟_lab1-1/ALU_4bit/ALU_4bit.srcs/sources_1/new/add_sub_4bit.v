@@ -38,6 +38,6 @@ module add_sub_4bit(
     adder_1bit fa2 (.a(a[2]), .b(b_comp[2]), .cin(carry[1]), .sum(sum[2]), .cout(carry[2]));
     adder_1bit fa3 (.a(a[3]), .b(b_comp[3]), .cin(carry[2]), .sum(sum[3]), .cout(carry[3]));
     assign cout = carry[3];  
-    // ��������λ：���λ��λ�������λ���룬���ڴ�������
+    
     assign overflow = carry[3] ^ carry[2];
 endmodule
