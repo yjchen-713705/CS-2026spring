@@ -45,14 +45,14 @@ module test_add_sub;
     a = 4'b0101;  // 5
     b = 4'b0011;  // 3
     #10;
-    $display("Test 1: %d + %d = %d, cout=%b", a, b, sum, cout);
+    $display("Test 1: %d(%b) + %d(%b) = %d(%b), cout=%b", a, a, b, b, sum, sum, cout);
 
     // 5-3
     sub = 1;
     a = 4'b0101;  // 5
     b = 4'b0011;  // 3
     #10;
-    $display("Test 2: %d - %d = %d, cout=%b", a, b, sum, cout);
+    $display("Test 2: %d(%b) + %d(%b) = %d(%b), cout=%b", a, a, b, b, sum, sum, cout);
     
     #10;
    $display("=========================================");
@@ -79,14 +79,14 @@ module test_add_sub;
    a = 4'b0100;    // 4
    b = 4'b0101;    // 5
    #10;
-   $display("Test 5: 4(0100) + 5(0101) = %d (%b), overflow=%b", sum, sum, overflow);
+   $display("Test 5: 4(%b) + 5(%b) = %d (%b), overflow=%b", a, b, sum, sum, overflow);
 
    // 测试4：负溢出
    sub = 1;    // 加法
    a = 4'b1011;    // -5
    b = 4'b0100;    // 4
    #10;
-   $display("Test 6: -5(1011) - 4(0100) = %d (%b), overflow=%b", sum, sum, overflow);
+   $display("Test 6: -5(%b) - 4(%b) = %d (%b), overflow=%b", a, b, sum, sum, overflow);
 
     end
 endmodule
