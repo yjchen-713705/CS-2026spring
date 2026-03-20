@@ -52,7 +52,7 @@ module test_add_sub;
     a = 4'b0101;  // 5
     b = 4'b0011;  // 3
     #10;
-    $display("Test 2: %d(%b) + %d(%b) = %d(%b), cout=%b", a, a, b, b, sum, sum, cout);
+    $display("Test 2: %d(%b) - %d(%b) = %d(%b), cout=%b", a, a, b, b, sum, sum, cout);
     
     #10;
    $display("=========================================");
