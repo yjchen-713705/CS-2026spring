@@ -9,30 +9,58 @@ module fsm(
 );  
 
 // 状态编码采用one-hot编码方式  
-// 使用5位宽度表示5个状态，每个状态只有一位为1  
-// TODO: 补充完整所有状态的one-hot编码  
+// ʹ��5λ���ȱ�ʾ5��״̬��ÿ��״ֻ̬��һλΪ1  
+// 补充完整所有状态的one-hot编码  
 parameter IDLE = 5'b00001,    // 空闲状态  
-          S1   = 5'b00010,    // ״̬1����⵽��һ��1  
-          S2   = 5'b00100,    // ״̬2����⵽10  
-          S3   = 5'b01000,    // ״̬3����⵽101  
-          S4   = 5'b10000;    // 状态4：检测到1011（目标序列）  
+          S1   = 5'b00010,    // 检测到1
+          S2   = 5'b00100,    // 检测到10
+          S3   = 5'b01000,    // 检测到101
+          S4   = 5'b10000;    // 检测到1011（目标序列）  
 
 reg [4:0]state;              // 状态寄存器，存储当前状态  
 
-// 状态转移逻辑  
+// 状态转移逻辑
 // 注意处理重叠序列
-// 在时钟上升沿或复位下降沿触发  
+// 在时钟上升沿或复位下降沿触发
 always@(posedge Clk_50 or negedge Rst_n)  
 begin  
-// TODO 
+    if (!Rst_n) begin
+        state <= IDLE;
+    end else begin
+        case(state)
+            IDLE: if (data_in)
+                    state <= S1;
+                else
+                    state <= IDLE;
+            S1: if (!data_in)
+                    state <= S2;
+                else
+                    state <= S1;
+            S2: if (data_in)
+                    state <= S3;
+                else
+                    state <= IDLE;
+            S3: if (data_in)
+                    state <= S4;
+                else
+                    state <= S2;
+            S4: if (data_in)
+                    state <= S1;
+                else
+                    state <= S2;
+            default: state <= IDLE;
+        endcase
+    end
 end  
 
 // 输出逻辑  
-// TODO: 补充完整输出逻辑 ，思考在什么时刻触发输出逻辑判断
-// 要求：当且仅当在S4状态（检测到目标序列1011）时输出高电平 ，其余时刻输出低电平
-always@(???)  
+// 当且仅当在S4状态（检测到目标序列1011）时输出高电平 ，其余时刻输出低电平
+always@(*)  
 begin  
-// TODO
+    if (state == S4)
+        data_out = 1'b1;
+    else
+        data_out = 1'b0;
 end  
    
 endmodule
