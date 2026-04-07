@@ -5,7 +5,7 @@ module fsm(
     input wire Rst_n,     // 低电平有效的异步复位信号  
     input wire data_in,   // 输入数据  
     
-    output reg data_out   // 输出数据，检测到特定序列时输出高电平  
+    output wire data_out   // 输出数据，检测到特定序列时输出高电平  
 );  
 
 // 状态编码采用one-hot编码方式  
@@ -55,12 +55,6 @@ end
 
 // 输出逻辑  
 // 当且仅当在S4状态（检测到目标序列1011）时输出高电平 ，其余时刻输出低电平
-always@(*)  
-begin  
-    if (state == S4)
-        data_out = 1'b1;
-    else
-        data_out = 1'b0;
-end  
+assign data_out = (state == S4);
    
 endmodule

@@ -2,5 +2,3 @@ INFO: [VRFC 10-2263] Analyzing Verilog file "D:/dev/FDU-2026spring/CS-2026spring
 INFO: [VRFC 10-311] analyzing module fsm
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/dev/FDU-2026spring/CS-2026spring/24300120183_³ÂÒ»­Z_lab1-2/Automaton/Automaton.srcs/sim_1/new/fsm_sim.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module fsm_sim
-INFO: [VRFC 10-2263] Analyzing Verilog file "D:/dev/FDU-2026spring/CS-2026spring/24300120183_³ÂÒ»­Z_lab1-2/Automaton/Automaton.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module glbl

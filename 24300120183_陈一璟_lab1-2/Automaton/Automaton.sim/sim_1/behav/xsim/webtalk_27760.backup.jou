@@ -2,12 +2,11 @@
 # Webtalk v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Tue Apr  7 19:34:29 2026
-# Process ID: 24552
+# Start of session at: Fri Apr  3 19:32:05 2026
+# Process ID: 27760
 # Current directory: D:/dev/FDU-2026spring/CS-2026spring/24300120183_陈一璟_lab1-2/Automaton/Automaton.sim/sim_1/behav/xsim
 # Command line: wbtcv.exe -mode batch -source D:/dev/FDU-2026spring/CS-2026spring/24300120183_陈一璟_lab1-2/Automaton/Automaton.sim/sim_1/behav/xsim/xsim.dir/fsm_sim_behav/webtalk/xsim_webtalk.tcl -notrace
 # Log file: D:/dev/FDU-2026spring/CS-2026spring/24300120183_陈一璟_lab1-2/Automaton/Automaton.sim/sim_1/behav/xsim/webtalk.log
 # Journal file: D:/dev/FDU-2026spring/CS-2026spring/24300120183_陈一璟_lab1-2/Automaton/Automaton.sim/sim_1/behav/xsim\webtalk.jou
 #-----------------------------------------------------------
 source D:/dev/FDU-2026spring/CS-2026spring/24300120183_陈一璟_lab1-2/Automaton/Automaton.sim/sim_1/behav/xsim/xsim.dir/fsm_sim_behav/webtalk/xsim_webtalk.tcl -notrace
-INFO: [Common 17-206] Exiting Webtalk at Tue Apr  7 19:34:30 2026...
