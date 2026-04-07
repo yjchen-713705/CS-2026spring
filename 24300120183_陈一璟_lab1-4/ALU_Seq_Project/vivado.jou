@@ -1,0 +1,50 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Tue Apr  7 14:04:38 2026
+# Process ID: 24096
+# Current directory: D:/dev/FDU-2026spring/CS-2026spring/24300120183_陈一璟_lab1-4/ALU_Seq_Project
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent35748 D:\dev\FDU-2026spring\CS-2026spring\24300120183_陈一璟_lab1-4\ALU_Seq_Project\ALU_Seq_Project.xpr
+# Log file: D:/dev/FDU-2026spring/CS-2026spring/24300120183_陈一璟_lab1-4/ALU_Seq_Project/vivado.log
+# Journal file: D:/dev/FDU-2026spring/CS-2026spring/24300120183_陈一璟_lab1-4/ALU_Seq_Project\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project D:/dev/FDU-2026spring/CS-2026spring/24300120183_陈一璟_lab1-4/ALU_Seq_Project/ALU_Seq_Project.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+source ALU_Seq_tb.tcl
+current_wave_config {}
+add_wave {{/ALU_Seq_tb}} 
+add_wave {{/ALU_Seq_tb/uut}} 
+add_wave {{/ALU_Seq_tb}} 
+close_sim
+launch_simulation
+source ALU_Seq_tb.tcl
+close_sim
+close_project
+open_project D:/dev/FDU-2026spring/CS-2026spring/24300120183_陈一璟_lab1-1/ALU_4bit/ALU_4bit.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+source test_add_sub.tcl
+close_sim
+launch_simulation
+launch_simulation
+source test_add_sub.tcl
+close_sim
+launch_simulation
+source test_add_sub.tcl
+close_sim
+launch_simulation
+source test_add_sub.tcl
+close_sim
+close_project
+open_project D:/dev/FDU-2026spring/CS-2026spring/24300120183_陈一璟_lab1-2/Automaton/Automaton.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+source fsm_sim.tcl
+close_sim
+launch_simulation
+source fsm_sim.tcl
+close_sim
+close_project

@@ -34,6 +34,11 @@ module ALU_Seq_tb;
     
     // 测试用例
     initial begin
+        // 初始值设为0
+        a = 0;
+        b = 0;
+        op = 0;
+        
         // 测试用例1: 5 + 3 = 8，cout=0
         #10 a = 5; b = 3; op = 3'b000;
         #10 $display("Test 1: 5 + 3 = %d, cout = %d", result, cout);

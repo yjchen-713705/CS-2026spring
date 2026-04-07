@@ -1,0 +1,13 @@
+Vivado Simulator 2020.2
+Time resolution is 1 ps
+Test 1: 5 + 3 =          8, cout = 0
+Test 2: FFFFFFFF + 1 = 00000000, cout = 1
+Test 3: 5 - 3 =          2, cout = 0
+Test 4: 3 - 5 = fffffffe, cout = 1
+Test 5: 5 * 3 =         15, cout = 0
+Test 6: 5 & 3 =          1, cout = 0
+Test 7: 5 | 3 =          7, cout = 0
+Test 8: 5 ^ 3 =          6, cout = 0
+Test 9: ~5 = fffffffa, cout = 0
+Test 10: 5 >> 1 =          2, cout = 0
+$finish called at time : 210 ns : File "D:/dev/FDU-2026spring/CS-2026spring/24300120183_³ÂÒ»­Z_lab1-4/ALU_Seq_tb.v" Line 83

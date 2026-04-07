@@ -4,6 +4,8 @@
 // 输入端口：clk（时钟，上升沿触发）、a（32位操作数A）、b（32位操作数B）、op（3位操作码）
 // 输出端口：result（32位运算结果）、cout（进位/溢出标志）
 
+`timescale 1ns / 1ps
+
 module ALU_Seq(
     input wire clk,
     input wire [31:0] a,
@@ -13,7 +15,7 @@ module ALU_Seq(
     output reg cout
 );
 
-    always @(posedge clk) begin
+    always @(posedge clk) begin   // 上升沿触发
         case(op)
             3'b000: // 加法
                 begin

@@ -1,0 +1,4 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/dev/FDU-2026spring/CS-2026spring/24300120183_³ÂÒ»­Z_lab1-4/ALU_Seq.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ALU_Seq
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/dev/FDU-2026spring/CS-2026spring/24300120183_³ÂÒ»­Z_lab1-4/ALU_Seq_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ALU_Seq_tb
