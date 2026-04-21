@@ -33,15 +33,15 @@ module display(
     // 数码管选择和数据显示
     always @(*) begin
         case(sel)
-            3'd0: begin ans = 8'b00000001; digit = s_reg[3:0]; end     // 最低位
-            3'd1: begin ans = 8'b00000010; digit = s_reg[7:4]; end
-            3'd2: begin ans = 8'b00000100; digit = s_reg[11:8]; end
-            3'd3: begin ans = 8'b00001000; digit = s_reg[15:12]; end
-            3'd4: begin ans = 8'b00010000; digit = s_reg[19:16]; end
-            3'd5: begin ans = 8'b00100000; digit = s_reg[23:20]; end
-            3'd6: begin ans = 8'b01000000; digit = s_reg[27:24]; end
-            3'd7: begin ans = 8'b10000000; digit = s_reg[31:28]; end   // 最高位
-            default: begin ans = 8'b00000000; digit = 4'h0; end
+            3'd0: begin ans = 8'b11111110; digit = s_reg[3:0]; end     // 最低位
+            3'd1: begin ans = 8'b11111101; digit = s_reg[7:4]; end
+            3'd2: begin ans = 8'b11111011; digit = s_reg[11:8]; end
+            3'd3: begin ans = 8'b11110111; digit = s_reg[15:12]; end
+            3'd4: begin ans = 8'b11101111; digit = s_reg[19:16]; end
+            3'd5: begin ans = 8'b11011111; digit = s_reg[23:20]; end
+            3'd6: begin ans = 8'b10111111; digit = s_reg[27:24]; end
+            3'd7: begin ans = 8'b01111111; digit = s_reg[31:28]; end   // 最高位
+            default: begin ans = 8'b11111111; digit = 4'h0; end
         endcase
     end
     

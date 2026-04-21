@@ -1,0 +1,12 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../FPGA_ALU.srcs/sources_1/imports/rtl/calculate.v" \
+"../../../../FPGA_ALU.srcs/sources_1/imports/rtl/display.v" \
+"../../../../FPGA_ALU.srcs/sources_1/imports/rtl/seg7.v" \
+"../../../../FPGA_ALU.srcs/sources_1/imports/rtl/top.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

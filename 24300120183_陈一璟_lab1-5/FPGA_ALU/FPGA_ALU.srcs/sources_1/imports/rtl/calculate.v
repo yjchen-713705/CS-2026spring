@@ -3,11 +3,10 @@
 module calculate(
     input wire [7:0] num1,  // 送入端口B
     input wire [2:0] op,
-    output [31:0] result
+    output reg [31:0] result
     );
     wire [31:0] num2;   // 送入端口A
     wire [31:0] Sign_extend;    // num1符号扩展后的值
-    reg [31:0] result;
     assign num2 = 32'h03;   // 固定输入设置，原本代码写错为32'h01
     assign Sign_extend = {{24{num1[7]}}, num1};    // 符号位扩展，将符号位重复24次，填补高位
 
