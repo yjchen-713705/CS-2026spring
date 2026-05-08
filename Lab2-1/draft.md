@@ -55,8 +55,8 @@ f. 16 和 18 行使用了syscall指令. 其功能是什么，如何使用它?
     4. 如有返回值，从指定寄存器中获取
 
 在本程序（lab2_1_ex1.asm）中：
+- `li $v0, 1 + syscall`，调用 print integer 服务，将 `$a0` 中的整数值（即计算结果`fib(n)`）打印到控制台
+- `li $v0, 10 + syscall`，调用 exit 服务，正常终止程序返回操作系统
 
-第16行：li $v0, 1 + syscall，调用 print integer 服务，将 $a0 中的整数值（即计算结果fib(n)）打印到控制台
-
-第18行：li $v0, 10 + syscall，调用 exit 服务，正常终止程序返回操作系统
-
+当n=9时，调试如下：
+![调试](pics/1f-run.png)
