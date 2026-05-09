@@ -11,7 +11,7 @@ a. `.data`, `.word`, `.text` 指示器（directives）的含义是什么?
 2. `.word`：在数据段中存储一个或多个32位整数值，按字边界对齐存放。例如 array: .word 7, 8, 9 会在内存中连续分配三个32位整数。
 ![什么是.word](pics/answer_word.png)
 >
-3. `.text`：指示后续的内容（指令代码）存放在代码段（Text segment）中，从下一个可用地址开始存储。程序真正要执行的每一条汇编指令都写在这个段下面。
+3. `.text`：指示后续的内容（指令代码）存放在代码段中，从下一个可用地址开始存储。程序真正要执行的每一条汇编指令都写在这个段下面。
 ![什么是.text](pics/answer_text.png)
 
 
@@ -55,8 +55,104 @@ f. 16 和 18 行使用了syscall指令. 其功能是什么，如何使用它?
     4. 如有返回值，从指定寄存器中获取
 
 在本程序（lab2_1_ex1.asm）中：
-- `li $v0, 1 + syscall`，调用 print integer 服务，将 `$a0` 中的整数值（即计算结果`fib(n)`）打印到控制台
-- `li $v0, 10 + syscall`，调用 exit 服务，正常终止程序返回操作系统
-
-当n=9时，调试如下：
+- `li $v0, 1 + syscall`，调用 print integer 服务，将 `$a0` 中的整数值（即计算结果`fib(n)`）打印到控制台（红色方框）
+- `li $v0, 10 + syscall`，调用 exit 服务，正常终止程序返回操作系统（蓝色方框）
+>
+调试如下：
 ![调试](pics/1f-run.png)
+
+---
+
+练习2：
+
+`lab2_1_ex2.asm`:
+1. 只需要写计算逻辑的代码段，直接`.text`段开始。
+2. 撰写递归计算逻辑的代码段，分别存储在对应寄存器中。
+3. 最终调用`li $v0, 10 + syscall`，正常终止程序返回操作系统。
+>
+完整代码：
+```asm
+        .text
+main: 	move $t0, $s0
+        move $t1, $s1
+        add $t2, $t0, $t1
+        add $t3, $t1, $t2
+        add $t4, $t2, $t3
+        add $t5, $t3, $t4
+        add $t6, $t4, $t5
+        add $t7, $t5, $t6
+        li $v0, 10
+        syscall
+```
+>
+手动设置`$s0`为5 `$s1`为7，运行结果如下：
+![运行结果](pics/2-result.png)
+
+---
+
+练习3：
+
+对`lab2_1_ex3.asm`进行调试，发现以下问题：
+
+1. Bug 1：指针移动步长有误
+
+    ```asm
+    addiu   $a0, $a0, 1     # 每次只加了 1 个字节
+    addiu   $a1, $a1, 1
+    ```
+    `source` 和 `dest` 里存的是字节word，每个占4字节，应该一次移动4个字节。
+>
+2. Bug 2：计数器 `$v0` 未初始化
+    `$v0`未清零，一开始可能是随机值，直接往上加会导致统计的复制个数错误。  
+>
+3. Bug 3：循环逻辑有误
+    现在的循环逻辑是：
+    1. 读一个数
+    2. 计数器 +1
+    3. 把数写到 dest
+    4. 指针后移
+    5. 如果这个数不为0，继续循环
+    
+    因此，读到 0 的时候，已经把它复制到 dest 并且计数器已经加了 1，然后才跳出循环，不符合需求。
+
+>
+修改如下：
+1. 把步长 1 改成 4。
+2. 初始化计数器 `$v0` 为0。
+3. 更改循环逻辑，先判断是否为0再做其他操作。
+
+`lab2_1_ex3_ok.asm`:
+```asm
+          .data
+source:   .word   3, 1, 4, 1, 5, 9, 0
+dest:     .word   0, 0, 0, 0, 0, 0, 0
+countmsg: .asciiz " values copied. "
+
+          .text
+
+main:   la      $a0, source
+        la      $a1, dest
+        li      $v0, 0               # 计数器清零
+
+loop:   lw      $v1, 0($a0)          # 读 source 当前值
+        beq     $v1, $zero, loopend  # 如果是 0，退出循环
+        sw      $v1, 0($a1)          # 写入 dest
+        addiu   $v0, $v0, 1          # 计数器 +1
+        addiu   $a0, $a0, 4          # 指针移动到下一个 word (4字节偏移)
+        addiu   $a1, $a1, 4
+        j       loop                 # 继续循环
+
+loopend:
+        move    $a0, $v0             # 打印复制的个数
+        jal     puti
+
+        la      $a0, countmsg
+        jal     puts
+
+        li      $a0, 0x0A
+        jal     putc
+
+finish:
+        li      $v0, 10
+        syscall
+```
