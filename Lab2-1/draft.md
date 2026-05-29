@@ -1,5 +1,6 @@
+# 
 
-回答问题a-f：
+### 练习1: 熟悉MARS
 
 a. `.data`, `.word`, `.text` 指示器（directives）的含义是什么? 
 
