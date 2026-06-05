@@ -1,0 +1,2 @@
+Ins_Rom.v,verilog,xil_defaultlib,../../../../Lab3_ROM.gen/sources_1/ip/Ins_Rom/sim/Ins_Rom.v,
+glbl.v,Verilog,xil_defaultlib,glbl.v
