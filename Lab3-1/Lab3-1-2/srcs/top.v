@@ -1,11 +1,10 @@
 module top(
     input  wire       clk,
-    input  wire       rst,
+    input  wire       rst,          // 低电平有效复位（cpu_resetn）
     output wire [7:0] ans,
     output wire [6:0] seg,
     output wire [10:0] led
 );
-
     wire clk_1hz;
     wire [31:0] pc, pc_next, pc_plus4;
     wire [31:0] instruction;
@@ -14,17 +13,20 @@ module top(
     wire memtoreg, memwrite, pcsrc, alusrc, regdst, regwrite, jump, branch;
     wire [2:0] alucontrol;
     
+    // 将低有效复位转换为高有效复位
+    wire rst_sync = ~rst;      // rst=1（未按）时 rst_sync=0；rst=0（按下）时 rst_sync=1
+    
     // 时钟分频
     clk_div u_clk_div (
         .clk_100mhz(clk),
-        .rst(rst),
+        .rst(rst_sync),          // 使用高有效复位
         .clk_1hz(clk_1hz)
     );
     
     // PC 寄存器
     pc u_pc (
         .clk(clk_1hz),
-        .rst(rst),
+        .rst(rst_sync),          // 使用高有效复位
         .pc_next(pc_next),
         .pc(pc)
     );
@@ -34,6 +36,9 @@ module top(
         .pc(pc),
         .pc_plus4(pc_plus4)
     );
+    
+    // PC 下一地址连接：pc_next = pc_plus4
+    assign pc_next = pc_plus4;
     
     // Ins_Rom
     Ins_Rom u_rom (
@@ -46,8 +51,6 @@ module top(
     assign funct = instruction[5:0];
     
     // 控制器
-    // 为了输出 branch 信号，需要在 controller 中增加 branch 输出端口
-    // 采取的修改：在 controller.v 中增加 output wire branch，并在顶层接收
     controller u_controller (
         .op(op),
         .funct(funct),
@@ -59,15 +62,14 @@ module top(
         .regdst(regdst),
         .regwrite(regwrite),
         .jump(jump),
-        .branch(branch),           // 新增branch在controller中
+        .branch(branch),
         .alucontrol(alucontrol)
     );
     
-
-    // 显示指令（nexys4 有8个数码管，按照ppt要求显示完整的32位指令）
+    // 显示指令（使用高有效复位）
     display u_display (
         .clk(clk),
-        .reset(rst),
+        .reset(rst_sync),        // 使用高有效复位
         .s(instruction),
         .ans(ans),
         .seg(seg)
