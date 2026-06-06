@@ -1,6 +1,5 @@
 `timescale 1ns / 1ps
 
-// 时钟分频器模块（100MHz → 1Hz）
 // 为 PC 寄存器和指令 ROM 提供慢速时钟
 module clk_div(
     input  wire clk_100mhz,

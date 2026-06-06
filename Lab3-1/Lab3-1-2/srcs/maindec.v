@@ -33,7 +33,7 @@ module maindec(
 	// TODO finished
 	always @(*) begin
 
-    // 归零（避免锁存）
+    // 全部归零避免锁存
         memtoreg = 0;
 		memwrite = 0;
 		branch = 0;

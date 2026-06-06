@@ -5,6 +5,7 @@ module top(
     output wire [6:0] seg,
     output wire [10:0] led
 );
+
     wire clk_1hz;
     wire [31:0] pc, pc_next, pc_plus4;
     wire [31:0] instruction;
@@ -37,7 +38,7 @@ module top(
     // Ins_Rom
     Ins_Rom u_rom (
         .clka(clk_1hz),
-        .addra(pc[7:0]),      // 深度 256，只用低 8 位
+        .addra(pc[9:2]),      // PC是字节地址，ROM是字地址，需要右移2位
         .douta(instruction)
     );
     
@@ -63,8 +64,7 @@ module top(
     );
     
 
-    // 显示指令（实验建议低16位，我们仍显示 32 位，因为display支持）
-    // TODO：是否要修改为低16位？向老师确认
+    // 显示指令（nexys4 有8个数码管，按照ppt要求显示完整的32位指令）
     display u_display (
         .clk(clk),
         .reset(rst),
@@ -73,7 +73,6 @@ module top(
         .seg(seg)
     );
     
-    // LED 映射
     assign led[0] = memtoreg;
     assign led[1] = memwrite;
     assign led[2] = pcsrc;
@@ -81,8 +80,9 @@ module top(
     assign led[4] = regdst;
     assign led[5] = regwrite;
     assign led[6] = jump;
-    assign led[7] = branch;   // 需要从 controller 得到 branch，已经在代码中添加output
+    assign led[7] = branch;
     assign led[8] = alucontrol[0];
     assign led[9] = alucontrol[1];
     assign led[10]= alucontrol[2];
+
 endmodule
