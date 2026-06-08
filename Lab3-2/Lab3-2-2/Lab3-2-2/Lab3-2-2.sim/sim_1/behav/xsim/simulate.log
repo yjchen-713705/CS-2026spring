@@ -1,0 +1,32 @@
+Vivado Simulator 2020.2
+Time resolution is 1 ps
+ Block Memory Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator module testbench.u_top.imem.inst.\native_mem_module.blk_mem_gen_v8_4_4_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module testbench.u_top.dmem.inst.\native_mem_module.blk_mem_gen_v8_4_4_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
+
+========== Single Cycle CPU Simulation Start ==========
+Time	 PC		 Instr		 ALUout		 MemWrite Addr Data
+Reset released at time 40 ns
+45	 0x00000000	 0x20020005	 0x00000005	 0	 0x00000005	          5
+55	 0x00000004	 0x20020005	 0x00000005	 0	 0x00000005	          5
+65	 0x00000008	 0x2003000c	 0x0000000c	 0	 0x0000000c	          0
+75	 0x0000000c	 0x2067fff7	 0x00000003	 0	 0x00000003	          0
+85	 0x00000010	 0x00e22025	 0x00000007	 0	 0x00000007	          5
+95	 0x00000014	 0x00642824	 0x00000004	 0	 0x00000004	          7
+105	 0x00000018	 0x00a42820	 0x0000000b	 0	 0x0000000b	          7
+115	 0x0000001c	 0x10a7000a	 0x00000008	 0	 0x00000008	          3
+125	 0x00000020	 0x0064202a	 0x00000000	 0	 0x00000000	          7
+135	 0x00000024	 0x10800001	 0x00000000	 0	 0x00000000	          0
+145	 0x0000002c	 0x20050000	 0x00000000	 0	 0x00000000	         11
+155	 0x00000030	 0x00853820	 0x00000000	 0	 0x00000000	          0
+165	 0x00000034	 0x00e23822	 0xfffffffb	 0	 0xfffffffb	          5
+175	 0x00000038	 0xac670044	 0x00000050	 1	 0x00000050	 4294967291
+185	 0x0000003c	 0x8c020050	 0x00000050	 0	 0x00000050	          5
+195	 0x00000040	 0x08000011	 0x00000000	 0	 0x00000000	          0
+205	 0x00000044	 0x20020001	 0x00000001	 0	 0x00000001	 4294967291
+215	 0x00000048	 0xac020054	 0x00000054	 1	 0x00000054	          1
+
+[SUCCESS] Simulation succeeded at time 215 ns
+  Address 84 written with data 1
+$stop called at time : 215 ns : File "D:/dev/FDU-2026spring/CS-2026spring/Lab3-2/Lab3-2-2/Lab3-2-2/Lab3-2-2.srcs/sim_1/imports/sim/tb_mips.v" Line 48

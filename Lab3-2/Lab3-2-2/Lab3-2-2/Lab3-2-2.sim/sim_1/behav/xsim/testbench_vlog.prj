@@ -1,0 +1,24 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../Lab3-2-2.gen/sources_1/ip/data_mem/sim/data_mem.v" \
+"../../../../Lab3-2-2.gen/sources_1/ip/inst_mem/sim/inst_mem.v" \
+"../../../../Lab3-2-2.srcs/sources_1/imports/rtl/adder.v" \
+"../../../../Lab3-2-2.srcs/sources_1/imports/rtl/alu.v" \
+"../../../../Lab3-2-2.srcs/sources_1/imports/rtl/aludec.v" \
+"../../../../Lab3-2-2.srcs/sources_1/imports/rtl/controller.v" \
+"../../../../Lab3-2-2.srcs/sources_1/imports/rtl/datapath.v" \
+"../../../../Lab3-2-2.srcs/sources_1/imports/rtl/maindec.v" \
+"../../../../Lab3-2-2.srcs/sources_1/imports/rtl/mips.v" \
+"../../../../Lab3-2-2.srcs/sources_1/imports/rtl/mux2.v" \
+"../../../../Lab3-2-2.srcs/sources_1/imports/rtl/pc.v" \
+"../../../../Lab3-2-2.srcs/sources_1/imports/rtl/regfile.v" \
+"../../../../Lab3-2-2.srcs/sources_1/imports/rtl/signext.v" \
+"../../../../Lab3-2-2.srcs/sources_1/imports/rtl/sl2.v" \
+"../../../../Lab3-2-2.srcs/sources_1/imports/rtl/top.v" \
+"../../../../Lab3-2-2.srcs/sim_1/imports/sim/tb_mips.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

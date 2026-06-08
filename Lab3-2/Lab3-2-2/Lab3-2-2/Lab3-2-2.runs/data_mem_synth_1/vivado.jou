@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Mon Jun  8 12:25:01 2026
+# Process ID: 20652
+# Current directory: D:/dev/FDU-2026spring/CS-2026spring/Lab3-2/Lab3-2-2/Lab3-2-2/Lab3-2-2.runs/data_mem_synth_1
+# Command line: vivado.exe -log data_mem.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source data_mem.tcl
+# Log file: D:/dev/FDU-2026spring/CS-2026spring/Lab3-2/Lab3-2-2/Lab3-2-2/Lab3-2-2.runs/data_mem_synth_1/data_mem.vds
+# Journal file: D:/dev/FDU-2026spring/CS-2026spring/Lab3-2/Lab3-2-2/Lab3-2-2/Lab3-2-2.runs/data_mem_synth_1\vivado.jou
+#-----------------------------------------------------------
+source data_mem.tcl -notrace
