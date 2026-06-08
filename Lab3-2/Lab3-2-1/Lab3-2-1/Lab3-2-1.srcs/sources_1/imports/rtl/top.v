@@ -1,14 +1,14 @@
 module top(
     input clk,
     input rst,
-    // æ§åˆ¶ä¿¡å·ï¼ˆç”± testbench æä¾›ï¼‰
+    // ¿ØÖÆĞÅºÅ£¨ÓÉ testbench Ìá¹©£©
     input RW,
     input MemtoReg,
     input [4:0] Rw,
     input [4:0] Ra,
     input [4:0] Rb,
     input [2:0] ALUControl,
-    // å¯é€‰è§‚å¯Ÿè¾“å‡ºï¼ˆä¾¿äºæ³¢å½¢æŸ¥çœ‹ï¼‰
+    // ¿ÉÑ¡¹Û²ìÊä³ö£¨±ãÓÚ²¨ĞÎ²é¿´£©
     output [31:0] busA,
     output [31:0] busB,
     output [31:0] alu_result,
@@ -43,7 +43,7 @@ regfile regfile_inst(
     .busB(busB_w)
 );
 
-// è¿æ¥åˆ°è¾“å‡ºç«¯å£
+// Á¬½Óµ½Êä³ö¶Ë¿Ú
 assign busA = busA_w;
 assign busB = busB_w;
 assign alu_result = alu_result_w;

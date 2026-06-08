@@ -1,0 +1,17 @@
+Vivado Simulator 2020.2
+Time resolution is 1 ps
+Time =                    0, RW=0, Ra= 0, Rb= 0, busA=         x, busB=         x, alu_result=         x, busW=         x
+Step 1: Write St1 = 1
+Time =                20000, RW=1, Ra= 0, Rb= 0, busA=         x, busB=         x, alu_result=         x, busW=         1
+Step 2: Write St2 = 1
+Step 3: Read St1 and St2
+Time =                36000, RW=0, Ra= 1, Rb= 2, busA=         1, busB=         1, alu_result=         2, busW=         1
+busA =          1, busB =          1 (should be 1 and 1)
+Step 4: ADD St0, St1, St2
+Time =                46000, RW=1, Ra= 1, Rb= 2, busA=         1, busB=         1, alu_result=         2, busW=         2
+alu_result =          2, busW =          2 (should be 2)
+Step 5: Verify St0 = 2
+Time =                56000, RW=0, Ra= 0, Rb= 2, busA=         2, busB=         1, alu_result=         3, busW=         3
+busA =          2 (should be 2)
+Test completed.
+$finish called at time : 86 ns : File "D:/dev/FDU-2026spring/CS-2026spring/Lab3-2/Lab3-2-1/Lab3-2-1/Lab3-2-1.srcs/sim_1/imports/sim/tb_top.v" Line 104

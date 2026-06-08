@@ -1,0 +1,10 @@
+0.7
+2020.2
+Nov 18 2020
+09:47:47
+D:/dev/FDU-2026spring/CS-2026spring/Lab3-2/Lab3-2-1/Lab3-2-1/Lab3-2-1.sim/sim_1/behav/xsim/glbl.v,1605673889,verilog,,,,glbl,,,,,,,,
+D:/dev/FDU-2026spring/CS-2026spring/Lab3-2/Lab3-2-1/Lab3-2-1/Lab3-2-1.srcs/sim_1/imports/sim/tb_top.v,1780726217,verilog,,,,tb_top,,,,,,,,
+D:/dev/FDU-2026spring/CS-2026spring/Lab3-2/Lab3-2-1/Lab3-2-1/Lab3-2-1.srcs/sources_1/imports/rtl/alu.v,1780726217,verilog,,D:/dev/FDU-2026spring/CS-2026spring/Lab3-2/Lab3-2-1/Lab3-2-1/Lab3-2-1.srcs/sources_1/imports/rtl/mux2.v,,alu,,,,,,,,
+D:/dev/FDU-2026spring/CS-2026spring/Lab3-2/Lab3-2-1/Lab3-2-1/Lab3-2-1.srcs/sources_1/imports/rtl/mux2.v,1780726217,verilog,,D:/dev/FDU-2026spring/CS-2026spring/Lab3-2/Lab3-2-1/Lab3-2-1/Lab3-2-1.srcs/sources_1/imports/rtl/regfile.v,,mux2,,,,,,,,
+D:/dev/FDU-2026spring/CS-2026spring/Lab3-2/Lab3-2-1/Lab3-2-1/Lab3-2-1.srcs/sources_1/imports/rtl/regfile.v,1780726217,verilog,,D:/dev/FDU-2026spring/CS-2026spring/Lab3-2/Lab3-2-1/Lab3-2-1/Lab3-2-1.srcs/sources_1/imports/rtl/top.v,,regfile,,,,,,,,
+D:/dev/FDU-2026spring/CS-2026spring/Lab3-2/Lab3-2-1/Lab3-2-1/Lab3-2-1.srcs/sources_1/imports/rtl/top.v,1780735819,verilog,,D:/dev/FDU-2026spring/CS-2026spring/Lab3-2/Lab3-2-1/Lab3-2-1/Lab3-2-1.srcs/sim_1/imports/sim/tb_top.v,,top,,,,,,,,

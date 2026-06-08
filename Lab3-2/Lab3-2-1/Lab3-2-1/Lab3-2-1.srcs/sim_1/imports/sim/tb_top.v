@@ -2,7 +2,7 @@
 
 module tb_top;
 
-// è¾“å…¥ä¿¡å·
+// ÊäÈëĞÅºÅ
 reg clk;
 reg rst;
 reg RW;
@@ -12,13 +12,13 @@ reg [4:0] Ra;
 reg [4:0] Rb;
 reg [2:0] ALUControl;
 
-// è¾“å‡ºä¿¡å·ï¼ˆè¿æ¥åˆ° top æ¨¡å—ï¼‰
+// Êä³öĞÅºÅ£¨Á¬½Óµ½ top Ä£¿é£©
 wire [31:0] busA;
 wire [31:0] busB;
 wire [31:0] alu_result;
 wire [31:0] busW;
 
-// å®ä¾‹åŒ– top æ¨¡å—
+// ÊµÀı»¯ top Ä£¿é
 top u_top (
     .clk(clk),
     .rst(rst),
@@ -34,12 +34,12 @@ top u_top (
     .busW(busW)
 );
 
-// æ—¶é’Ÿç”Ÿæˆï¼šå‘¨æœŸ 10ns
+// Ê±ÖÓÉú³É£ºÖÜÆÚ 10ns
 always #5 clk = ~clk;
 
-// æµ‹è¯•æµç¨‹
+// ²âÊÔÁ÷³Ì
 initial begin
-    // åˆå§‹åŒ–æ‰€æœ‰æ§åˆ¶ä¿¡å·
+    // ³õÊ¼»¯ËùÓĞ¿ØÖÆĞÅºÅ
     clk = 0;
     rst = 1;
     RW = 0;
@@ -47,49 +47,49 @@ initial begin
     Rw = 5'b0;
     Ra = 5'b0;
     Rb = 5'b0;
-    ALUControl = 3'b010;   // åŠ æ³•ï¼ˆé»˜è®¤ï¼‰
+    ALUControl = 3'b010;   // ¼Ó·¨£¨Ä¬ÈÏ£©
 
-    // å¤ä½é‡Šæ”¾
+    // ¸´Î»ÊÍ·Å
     #15 rst = 0;
     #5;
 
-    // ========== æ­¥éª¤1ï¼šå‘ St1 (åœ°å€1) å†™å…¥ 32'd1 ==========
+    // ========== ²½Öè1£ºÏò St1 (µØÖ·1) Ğ´Èë 32'd1 ==========
     $display("Step 1: Write St1 = 1");
-    MemtoReg = 1;           // é€‰æ‹©å¸¸æ•° 32'd1 ä½œä¸ºå†™å…¥æ•°æ®
-    RW = 1;                 // å†™ä½¿èƒ½
-    Rw = 5'd1;              // ç›®æ ‡åœ°å€ St1
-    @(posedge clk);         // ç­‰å¾…å†™å…¥æ—¶é’Ÿæ²¿
-    #1;                     // ä¿æŒç¨³å®šåè§‚å¯Ÿï¼ˆå¯é€‰ï¼‰
+    MemtoReg = 1;           // Ñ¡Ôñ³£Êı 32'd1 ×÷ÎªĞ´ÈëÊı¾İ
+    RW = 1;                 // Ğ´Ê¹ÄÜ
+    Rw = 5'd1;              // Ä¿±êµØÖ· St1
+    @(posedge clk);         // µÈ´ıĞ´ÈëÊ±ÖÓÑØ
+    #1;                     // ±£³ÖÎÈ¶¨ºó¹Û²ì£¨¿ÉÑ¡£©
 
-    // ========== æ­¥éª¤2ï¼šå‘ St2 (åœ°å€2) å†™å…¥ 32'd1 ==========
+    // ========== ²½Öè2£ºÏò St2 (µØÖ·2) Ğ´Èë 32'd1 ==========
     $display("Step 2: Write St2 = 1");
-    Rw = 5'd2;              // ç›®æ ‡åœ°å€ St2
-    @(posedge clk);         // å†™å…¥
+    Rw = 5'd2;              // Ä¿±êµØÖ· St2
+    @(posedge clk);         // Ğ´Èë
     #1;
 
-    // ========== æ­¥éª¤3ï¼šéªŒè¯å†™å…¥ St1 å’Œ St2 çš„å€¼ ==========
+    // ========== ²½Öè3£ºÑéÖ¤Ğ´Èë St1 ºÍ St2 µÄÖµ ==========
     $display("Step 3: Read St1 and St2");
-    RW = 0;                 // è¯»æ¨¡å¼
+    RW = 0;                 // ¶ÁÄ£Ê½
     Ra = 5'd1;
     Rb = 5'd2;
-    #10;                    // ç­‰å¾…ç»„åˆé€»è¾‘ç¨³å®š
+    #10;                    // µÈ´ı×éºÏÂß¼­ÎÈ¶¨
     $display("busA = %d, busB = %d (should be 1 and 1)", busA, busB);
     if (busA !== 32'd1 || busB !== 32'd1)
         $display("ERROR: Write verification failed!");
 
-    // ========== æ­¥éª¤4ï¼šæ¨¡æ‹Ÿ ADD St0, St1, St2 ==========
+    // ========== ²½Öè4£ºÄ£Äâ ADD St0, St1, St2 ==========
     $display("Step 4: ADD St0, St1, St2");
-    MemtoReg = 0;           // é€‰æ‹© ALU ç»“æœå†™å…¥
-    ALUControl = 3'b010;    // åŠ æ³•è¿ç®—
+    MemtoReg = 0;           // Ñ¡Ôñ ALU ½á¹ûĞ´Èë
+    ALUControl = 3'b010;    // ¼Ó·¨ÔËËã
     RW = 1;
-    Rw = 5'd0;              // å†™å› St0
-    Ra = 5'd1;              // ALU æºæ“ä½œæ•°1 æ¥è‡ª St1
-    Rb = 5'd2;              // ALU æºæ“ä½œæ•°2 æ¥è‡ª St2
-    @(posedge clk);         // æ‰§è¡Œå¹¶å†™å…¥
+    Rw = 5'd0;              // Ğ´»Ø St0
+    Ra = 5'd1;              // ALU Ô´²Ù×÷Êı1 À´×Ô St1
+    Rb = 5'd2;              // ALU Ô´²Ù×÷Êı2 À´×Ô St2
+    @(posedge clk);         // Ö´ĞĞ²¢Ğ´Èë
     #1;
     $display("alu_result = %d, busW = %d (should be 2)", alu_result, busW);
 
-    // ========== æ­¥éª¤5ï¼šéªŒè¯ St0 æ˜¯å¦ä¸º 2 ==========
+    // ========== ²½Öè5£ºÑéÖ¤ St0 ÊÇ·ñÎª 2 ==========
     $display("Step 5: Verify St0 = 2");
     RW = 0;
     Ra = 5'd0;
@@ -98,13 +98,13 @@ initial begin
     if (busA !== 32'd2)
         $display("ERROR: ADD instruction failed!");
 
-    // ä»¿çœŸç»“æŸ
+    // ·ÂÕæ½áÊø
     $display("Test completed.");
     #20;
     $finish;
 end
 
-// å¯é€‰ï¼šæ³¢å½¢è§‚å¯Ÿæ—¶æ‰“å°å…³é”®ä¿¡å·å˜åŒ–
+// ¿ÉÑ¡£º²¨ĞÎ¹Û²ìÊ±´òÓ¡¹Ø¼üĞÅºÅ±ä»¯
 initial begin
     $monitor("Time = %t, RW=%b, Ra=%d, Rb=%d, busA=%d, busB=%d, alu_result=%d, busW=%d",
               $time, RW, Ra, Rb, busA, busB, alu_result, busW);
