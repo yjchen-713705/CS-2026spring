@@ -24,12 +24,17 @@ module alu(
 	assign zero = (y == 32'b0);
 
 	always @(*) begin
-		case (op[2:1])
-			2'b01:overflow <= a[31] & b[31] & ~s[31] |
-							~a[31] & ~b[31] & s[31];
-			2'b11:overflow <= ~a[31] & b[31] & s[31] |
-							a[31] & ~b[31] & ~s[31];
-			default : overflow <= 1'b0;
-		endcase	
+		// 注意：slt (op=3'b111) 不需要溢出标志
+		if (op == 3'b111) begin
+			overflow <= 1'b0;
+		end else begin
+			case (op[2:1])
+				2'b01: overflow <= a[31] & b[31] & ~s[31] |
+								~a[31] & ~b[31] & s[31];
+				2'b11: overflow <= ~a[31] & b[31] & s[31] |
+								a[31] & ~b[31] & ~s[31];
+				default: overflow <= 1'b0;
+			endcase
+		end
 	end
 endmodule

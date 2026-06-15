@@ -1,7 +1,5 @@
 `timescale 1ns / 1ps
 
-
-
 module maindec(
 	input wire[5:0] op,
 
@@ -11,7 +9,7 @@ module maindec(
 	output wire jump,
 	output wire[1:0] aluop
     );
-	//add your code here according to lab 7
+
 	reg [8:0] controls;
     assign {regwrite,regdst,alusrc,branch,memwrite,memtoreg,jump,aluop} = controls;
     always@(*) begin

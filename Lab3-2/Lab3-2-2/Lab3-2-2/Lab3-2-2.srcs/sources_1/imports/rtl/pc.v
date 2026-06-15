@@ -1,22 +1,23 @@
 `timescale 1ns / 1ps
 
-// 32位pc
+// 32λpc
 module pc(
     input  wire        clk,       
     input  wire        rst,       
-    input  wire [31:0] pc_next,   // 下一条指令的地址
-    output reg  [31:0] pc,        // 当前指令地址（输出）
-    output wire        inst_ce    // 指令使能信号
+    input  wire [31:0] pc_next,   // ��һ��ָ��ĵ�ַ
+    output reg  [31:0] pc,        // ��ǰָ���ַ�������
+    output wire        inst_ce    // ָ��ʹ���ź�
 );
 
-    assign inst_ce = 1'b1;   // 一直使能
+    assign inst_ce = 1'b1;   // һֱʹ��
 
-    // 在时钟上升沿更新PC值
-    always @(posedge clk or posedge rst) begin
+    // ��ʱ�������ظ���PCֵ
+// pc.v �޸ĺ�
+    always @(negedge clk or posedge rst) begin
         if (rst)
-            pc <= 32'h0000_0000;  // 复位时PC清零，指向程序起始地址
+            pc <= 32'h0000_0000;
         else
-            pc <= pc_next;         // 否则更新为下一条指令地址
+            pc <= pc_next;
     end
 
 endmodule

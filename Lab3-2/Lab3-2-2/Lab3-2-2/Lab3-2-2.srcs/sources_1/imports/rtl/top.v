@@ -4,12 +4,12 @@ module top(
     input  wire        clk,
     input  wire        rst,
     output wire [31:0] writedata,
-    output wire [31:0] dataadr,   // ALU ½á¹û£¨µØÖ·£©
+    output wire [31:0] dataadr,   // ALU ç»“æœï¼ˆåœ°å€ï¼‰
     output wire        memwrite,
-    // ĞÂÔö¹Û²ìĞÅºÅ
+    // æ–°å¢è§‚å¯Ÿä¿¡å·
     output wire [31:0] pc,
     output wire [31:0] instr,
-    output wire [31:0] aluout     // Óë dataadr ÏàÍ¬£¬±ãÓÚ testbench ´òÓ¡
+    output wire [31:0] aluout     // ä¸ dataadr ç›¸åŒï¼Œä¾¿äº testbench æ‰“å°
 );
 
     wire [31:0] readdata;
@@ -27,16 +27,16 @@ module top(
     );
 
     assign dataadr = aluout_w;
-    assign aluout   = aluout_w;   // Êä³öµ½ testbench
+    assign aluout   = aluout_w;   // è¾“å‡ºåˆ° testbench
 
-    // Ö¸Áî ROM£¨¼ÙÉèÉî¶È256×Ö£¬µØÖ·Î»¿í8Î»£©
+    // æŒ‡ä»¤ ROMï¼ˆå‡è®¾æ·±åº¦256å­—ï¼Œåœ°å€ä½å®½8ä½ï¼‰
     inst_mem imem (
         .clka (clk),
-        .addra(pc[9:2]),    // ×Ö½ÚµØÖ·×ª×ÖµØÖ·
+        .addra(pc[9:2]),    // å­—èŠ‚åœ°å€è½¬å­—åœ°å€
         .douta(instr)
     );
 
-    // Êı¾İ RAM£¨Éî¶È256×Ö£©
+    // æ•°æ® RAMï¼ˆæ·±åº¦256å­—ï¼‰
     data_mem dmem (
         .clka (~clk),
         .ena  (1'b1),

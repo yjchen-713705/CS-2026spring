@@ -6,7 +6,7 @@ module aludec(
 	input wire[1:0] aluop,
 	output reg[2:0] alucontrol
     );
-	// add your code here
+
 	always @(funct,aluop) 
 	    begin
             case(aluop)

@@ -73,7 +73,7 @@ OPTRACE "data_mem_synth_1" START { ROLLUP_AUTO }
 set_param project.vivado.isBlockSynthRun true
 set_msg_config -msgmgr_mode ooc_run
 OPTRACE "Creating in-memory project" START { }
-create_project -in_memory -part xc7a100tcsg324-1
+create_project -in_memory -part xc7k70tfbv676-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
@@ -112,7 +112,7 @@ if { $cached_ip eq {} } {
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }
-synth_design -top data_mem -part xc7a100tcsg324-1 -mode out_of_context
+synth_design -top data_mem -part xc7k70tfbv676-1 -mode out_of_context
 OPTRACE "synth_design" END { }
 OPTRACE "Write IP Cache" START { }
 

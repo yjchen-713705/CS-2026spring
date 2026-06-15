@@ -14,7 +14,6 @@ module datapath(
 	input wire[31:0] readdata
     );
 	
-	//add your code here
     // 内部连线
     wire [31:0] pc_plus4, pc_branch, pc_jump, pc_next;
     wire [31:0] signImm, imm_shifted;

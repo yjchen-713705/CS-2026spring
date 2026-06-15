@@ -15,7 +15,7 @@ module datapath(
     );
 	
 	//add your code here
-    // ÄÚ²¿Á¬Ïß
+    // å†…éƒ¨è¿çº¿
     wire [31:0] pc_plus4, pc_branch, pc_jump, pc_next;
     wire [31:0] signImm, imm_shifted;
     wire [31:0] rd1, rd2, srcA, srcB;
@@ -26,20 +26,20 @@ module datapath(
     // 1. pc
     // pc + 4
     adder add_pc4(.a(pc), .b(32'd4), .y(pc_plus4));
-    // Æ«ÒÆÁ¿×óÒÆ2Î»
+    // åç§»é‡å·¦ç§»2ä½
     sl2 shift(.a(signImm), .y(imm_shifted));
     // pc + 4 + shift
     adder adder_branch(.a(pc_plus4), .b(imm_shifted), .y(pc_branch));
-    // Ìø×ªaddrÆ´½Ó
+    // è·³è½¬addræ‹¼æ¥
     assign pc_jump = {pc_plus4[31:28], instr[25:0],2'b00};
-    // pcsrcÑ¡Ôñ·ÖÖ§»òË³Ğò
+    // pcsrcé€‰æ‹©åˆ†æ”¯æˆ–é¡ºåº
     mux2 #(32) branch_mux(
         .d0(pc_plus4), 
         .d1(pc_branch), 
         .s(pcsrc), 
         .y(pc_br_sel)
     );
-    // jumpÑ¡Ôñ£º×îÖÕpc
+    // jumpé€‰æ‹©ï¼šæœ€ç»ˆpc
     mux2 #(32) jump_mux(
         .d0(pc_br_sel), 
         .d1(pc_jump), 
@@ -52,11 +52,11 @@ module datapath(
         .rst(rst),
         .pc_next(pc_next),
         .pc(pc),
-        .inst_ce()   // Ğü¿Õ£¬²»ĞèÒª
+        .inst_ce()   // æ‚¬ç©ºï¼Œä¸éœ€è¦
     );
 
 
-    // 2. reg pile¶ÁÈ¡
+    // 2. reg pileè¯»å–
     regfile rf(
         .clk(clk),
         .we3(regwrite),
@@ -67,9 +67,9 @@ module datapath(
         .rd1(rd1),
         .rd2(rd2) 
     );
-    assign writedata = rd2;     // ÓÃÓÚswÖ¸ÁîĞ´ÈëRAM
+    assign writedata = rd2;     // ç”¨äºswæŒ‡ä»¤å†™å…¥RAM
 
-    // 3. ALU ÊäÈëÑ¡Ôñ£¨ALUsrc£©
+    // 3. ALU è¾“å…¥é€‰æ‹©ï¼ˆALUsrcï¼‰
     assign srcA = rd1;
     mux2 #(32) alu_src_mux (
         .d0(rd2), 
@@ -88,15 +88,15 @@ module datapath(
         .overflow(overflow)
     );
 
-    // 5. ¼Ä´æÆ÷µØÖ·Ñ¡Ôñ/Ğ´»ØÊı¾İ
-    // Ğ´»ØÊı¾İÀ´Ô´£ºalu½á¹û»òÕßram¶Á³ö
+    // 5. å¯„å­˜å™¨åœ°å€é€‰æ‹©/å†™å›æ•°æ®
+    // å†™å›æ•°æ®æ¥æºï¼šaluç»“æœæˆ–è€…ramè¯»å‡º
     mux2 #(32) wd_mux (
         .d0(aluout), 
         .d1(readdata), 
         .s(memtoreg), 
         .y(wd3)
     );
-    // Ğ´¼Ä´æÆ÷µØÖ·Ñ¡Ôñ£ºrt (instr[20:16]) »ò rd (instr[15:11])
+    // å†™å¯„å­˜å™¨åœ°å€é€‰æ‹©ï¼šrt (instr[20:16]) æˆ– rd (instr[15:11])
     mux2 #(5) ra_mux (
         .d0(instr[20:16]), 
         .d1(instr[15:11]), 
@@ -104,7 +104,7 @@ module datapath(
         .y(ra3)
     );
 
-    // ·ûºÅÀ©Õ¹
+    // ç¬¦å·æ‰©å±•
     signext sign_ext(.a(instr[15:0]),.y(signImm));
 
 endmodule
