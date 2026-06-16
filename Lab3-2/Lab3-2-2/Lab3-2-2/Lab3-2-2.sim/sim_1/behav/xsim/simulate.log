@@ -1,0 +1,38 @@
+Vivado Simulator 2020.2
+Time resolution is 1 ps
+ Block Memory Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator module testbench.top.imem.inst.\native_mem_module.blk_mem_gen_v8_4_4_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module testbench.top.dmem.inst.\native_mem_module.blk_mem_gen_v8_4_4_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Starting simulation...
+Reset released at time               200000
+PC=00000000  Instr=xxxxxxxx  unknown instruction
+PC=00000004  Instr=20020005  addi $ 2, $ 0,      5
+  => Write reg  2 = 00000005
+PC=00000008  Instr=2003000c  addi $ 3, $ 0,     12
+  => Write reg  3 = 0000000c
+PC=0000000c  Instr=2067fff7  addi $ 7, $ 3,     -9
+  => Write reg  7 = 00000003
+PC=00000010  Instr=00e22025  or  $ 4, $ 7, $ 2
+  => Write reg  4 = 00000007
+PC=00000014  Instr=00642824  and $ 5, $ 3, $ 4
+  => Write reg  5 = 00000004
+PC=00000018  Instr=00a42820  add $ 5, $ 5, $ 4
+  => Write reg  5 = 0000000b
+PC=0000001c  Instr=10a7000a  beq $ 5, $ 7, 0x00000028
+PC=00000020  Instr=0064202a  slt $ 4, $ 3, $ 4
+  => Write reg  4 = 00000000
+PC=00000028  Instr=10800001  beq $ 4, $ 0, 0x00000004
+PC=0000002c  Instr=00e2202a  slt $ 4, $ 7, $ 2
+  => Write reg  4 = 00000001
+PC=00000030  Instr=00853820  add $ 7, $ 4, $ 5
+  => Write reg  7 = 0000000c
+PC=00000034  Instr=00e23822  sub $ 7, $ 7, $ 2
+  => Write reg  7 = 00000007
+  => Write memory addr 00000050 = 00000007
+PC=00000038  Instr=ac670044  sw  $ 7,     68($ 3)
+PC=0000003c  Instr=8c020050  lw  $ 2,     80($ 0)
+  => Write reg  2 = 00000007
+PC=00000044  Instr=08000011  j    0x00000044
+Simulation succeeded at time              3300000
+$finish called at time : 3300 ns : File "D:/dev/FDU-2026spring/CS-2026spring/Lab3-2/Lab3-2-2/Lab3-2-2/Lab3-2-2.srcs/sim_1/imports/sim/tb_mips.v" Line 40
