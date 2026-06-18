@@ -24,7 +24,7 @@ module alu(
 	assign zero = (y == 32'b0);
 
 	always @(*) begin
-		// 注意：slt (op=3'b111) 不需要溢出标志
+		// slt (op=3'b111) 不检查溢出位
 		if (op == 3'b111) begin
 			overflow <= 1'b0;
 		end else begin

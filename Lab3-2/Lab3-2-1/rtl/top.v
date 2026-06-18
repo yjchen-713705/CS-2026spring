@@ -1,14 +1,14 @@
 module top(
     input clk,
     input rst,
-    // 控制信号（由 testbench 提供）
+
     input RW,
     input MemtoReg,
     input [4:0] Rw,
     input [4:0] Ra,
     input [4:0] Rb,
     input [2:0] ALUControl,
-    // 可选观察输出（便于波形查看）
+
     output [31:0] busA,
     output [31:0] busB,
     output [31:0] alu_result,
@@ -43,7 +43,6 @@ regfile regfile_inst(
     .busB(busB_w)
 );
 
-// 连接到输出端口
 assign busA = busA_w;
 assign busB = busB_w;
 assign alu_result = alu_result_w;
