@@ -27,16 +27,16 @@ module top(
     );
 
     assign dataadr = aluout_w;
-    assign aluout   = aluout_w;   // 输出到 testbench
+    assign aluout   = aluout_w;
 
-    // 指令 ROM（假设深度256字，地址位宽8位）
+    // 指令 ROM
     inst_mem imem (
         .clka (clk),
         .addra(pc[9:2]),    // 字节地址转字地址
         .douta(instr)
     );
 
-    // 数据 RAM（深度256字）
+    // 数据 RAM
     data_mem dmem (
         .clka (~clk),
         .ena  (1'b1),

@@ -48,19 +48,19 @@ module testbench();
     end
 
 
-    // 指令类型解码（用于显示）
+    // 鎸囦护绫诲瀷瑙ｇ爜锛堢敤浜庢樉绀猴級
     reg [31:0] instr_reg;
     always @(posedge clk) begin
         if (!rst) begin
-            instr_reg <= top.instr;   // 捕获当前指令
+            instr_reg <= top.instr;   // 鎹曡幏褰撳墠鎸囦护
         end
     end
 
-    // 打印执行信息（每个时钟上升沿，复位释放后）
+    // 鎵撳嵃鎵ц淇℃伅锛堟瘡涓椂閽熶笂鍗囨部澶嶄綅閲婃斁鍚庯級
     always @(posedge clk) begin
         if (!rst) begin
             $write("PC=%h  Instr=%h  ", top.pc, top.instr);
-            // 简易指令解码打印
+            
             casez (top.instr[31:26])
                 6'b000000: begin  // R-type
                     case (top.instr[5:0])
@@ -82,14 +82,14 @@ module testbench();
         end
     end
 
-    // 可选：打印寄存器写操作
+    // 鎵撳嵃瀵勫瓨鍣ㄥ啓鎿嶄綔
     always @(posedge clk) begin
         if (top.mips_inst.dp.rf.we3 && !rst) begin
             $display("  => Write reg %d = %h", top.mips_inst.dp.ra3, top.mips_inst.dp.wd3);
         end
     end
 
-    // 可选：打印数据存储器写操作
+    // 鎵撳嵃鏁版嵁瀛樺偍鍣ㄥ啓鎿嶄綔
     always @(negedge clk) begin
         if (top.memwrite && !rst) begin
             $display("  => Write memory addr %h = %h", top.dataadr, top.writedata);
